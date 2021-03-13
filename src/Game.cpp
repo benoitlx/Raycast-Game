@@ -21,6 +21,11 @@ void Game::initWindow()
 
 }
 
+void initRaycast()
+{
+
+}
+
 Game::Game()
 {
     this->initVariables();
@@ -91,8 +96,11 @@ void Game::render()
 }
 
 
+// retourne les coord de l'intersection du rayon et du mur, la distance et le type du mur (type à changer) 
+int raycast(unsigned int it)
+{
 
-
+}
 
 
 
