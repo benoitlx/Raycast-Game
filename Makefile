@@ -16,14 +16,22 @@ all: $(EXEC_NAME)
 	
 
 clean:
-	rm $(EXEC_NAME) $(OBJ_FILES)
+	rm $(EXEC_NAME)
+
+cleanObj:
+	rm $(OBJ_FILES)
+
+
+
 
 $(EXEC_NAME) : $(OBJ_FILES)
 	$(CC) -o $(EXEC_NAME) $(OBJ_FILES) $(LIBS)
 
-
 %.o: $(SRC_DIR)%.cpp 
 	$(CC) $(CFLAGS) -o $@ -c $<
+
+
+
 
 
 install:
