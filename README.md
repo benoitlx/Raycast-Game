@@ -10,11 +10,12 @@ Run
 ```bash
 ./RaycastGame
 ```
-after compile the project will launch the program
+after compiling the project to launch the program.
 
 You can also run this commands:
-
-> make clean
-> make cleanObj
-> make install
-> make uninstall
+```bash
+make clean
+make cleanObj
+make install
+make uninstall
+```
