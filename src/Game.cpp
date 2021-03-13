@@ -1,5 +1,10 @@
 #include "../headers/Game.h"
 
+
+// ========================================================================================
+// Initialization
+// ========================================================================================
+
 void Game::initVariables()
 {
     this->window = nullptr;
@@ -34,7 +39,7 @@ Game::~Game()
 
 
 // =================================================================================================
-/* Functions */
+// Functions 
 // =================================================================================================
 
 // to close and manage window
@@ -55,22 +60,26 @@ void Game::pollEvents()
     }
 }
 
+// update Player position, enemies position, actualize variable...
 void Game::update()
 {
     this->pollEvents();
 }
 
+
+//render map
 void Game::render2d()
 {
 
 }
 
-
+// 3d render of the game
 void Game::render3d(unsigned int it)
 {
 
 }
 
+// render and display all the game
 void Game::render()
 {
     this->window->clear(sf::Color(255, 0, 0, 255));
@@ -80,6 +89,34 @@ void Game::render()
 
     this->window->display();
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 const bool Game::running() const
 {

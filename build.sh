@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 echo "** Start Compiling **"
 
@@ -7,4 +7,8 @@ make cleanObj
 
 echo "** Done **"
 
+if [ "$1" = '-r' ]
+then
+	./RaycastGame
+fi
 
