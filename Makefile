@@ -1,9 +1,19 @@
+# Raycast Game
+# Created by benoitlx
+
 CC = g++
 EXEC_NAME = RaycastGame
-LIBS = -lsfml-graphics -lsfml-window -lsfml-system
+CFLAGS = -Wall
+SRC_DIR = src/
 OBJ_FILES = main.o Game.o Player.o Map.o
+INSTALL_DIR = /usr/bin
+
+
+# Libraries
+LIBS = -lsfml-graphics -lsfml-window -lsfml-system
 
 all: $(EXEC_NAME)
+	
 
 clean:
 	rm $(EXEC_NAME) $(OBJ_FILES)
@@ -11,14 +21,13 @@ clean:
 $(EXEC_NAME) : $(OBJ_FILES)
 	$(CC) -o $(EXEC_NAME) $(OBJ_FILES) $(LIBS)
 
-main.o:
-	$(CC) -o main.o -c src/main.cpp
 
-Game.o: 
-	$(CC) -o Game.o -c src/Game.cpp
+%.o: $(SRC_DIR)%.cpp 
+	$(CC) $(CFLAGS) -o $@ -c $<
 
-Player.o:
-	$(CC) -o Player.o -c src/Player.cpp
 
-Map.o:
-	$(CC) -o Map.o -c src/Map.cpp
+install:
+	cp $(EXEC_NAME) $(INSTALL_DIR)
+
+uninstall:
+	rm $(INSTALL_DIR)/$(EXEC_NAME)
