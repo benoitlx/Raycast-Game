@@ -8,7 +8,8 @@ class Player
 
         void move();
 
-    private:
+    protected:
+        float speedMove, speedAngle;
 
 
 };

@@ -1,0 +1,95 @@
+#include "../headers/Game.h"
+
+void Game::initVariables()
+{
+    this->window = nullptr;
+
+}
+
+void Game::initWindow()
+{
+    this->videoMode.height = 600;
+    this->videoMode.width = 800;
+
+
+    this->window = new sf::RenderWindow(this->videoMode, "Raycasting", sf::Style::Titlebar | sf::Style::Close);
+
+}
+
+Game::Game()
+{
+    this->initVariables();
+    this->initWindow();
+}
+
+Game::~Game()
+{
+    delete this->window;
+}
+
+
+
+
+
+
+
+// =================================================================================================
+/* Functions */
+// =================================================================================================
+
+// to close and manage window
+void Game::pollEvents()
+{
+    while (this->window->pollEvent(this->event))
+    {
+        switch (this->event.type)
+        {
+            case sf::Event::Closed:
+                this->window->close();
+                break;
+            case sf::Event::KeyPressed:
+                if (this->event.key.code == sf::Keyboard::Escape)
+                    this->window->close();
+                break;
+        }
+    }
+}
+
+void Game::update()
+{
+    this->pollEvents();
+}
+
+void Game::render2d()
+{
+
+}
+
+
+void Game::render3d(unsigned int it)
+{
+
+}
+
+void Game::render()
+{
+    this->window->clear(sf::Color(255, 0, 0, 255));
+
+    this->render2d();
+    this->render3d(0);
+
+    this->window->display();
+}
+
+const bool Game::running() const
+{
+    return this->window->isOpen();
+}
+
+const bool Game::pause() const
+{
+    return false;
+}
+
+
+

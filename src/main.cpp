@@ -5,28 +5,18 @@
 
 int main()
 {
-	Game game();
-	/*
-	while (true)
+	Game game;
+	
+	while (game.running())
 	{
-
-		if (game.quit())
+		if (game.pause())
 		{
-			break;
+			; // display menu
 		}else {
 
-			if (game.pause())
-			{
-				; // display menu
-			}else {
+			game.update();
 
-				game.update();
-
-				game.render();
-			}
-
+			game.render();
 		}
-
 	}
-	*/
 }
