@@ -1,5 +1,20 @@
 # Raycast Game Engine
 
-> ./build.sh 
+Run
+```bash
+./build.sh 
+```
+to compile the project.
 
-will compile the project and make it executable. The program will start automatically
+Run 
+```bash
+./RaycastGame
+```
+after compile the project will launch the program
+
+You can also run this commands:
+
+> make clean
+> make cleanObj
+> make install
+> make uninstall
