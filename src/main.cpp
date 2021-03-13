@@ -5,8 +5,8 @@
 
 int main()
 {
-	Game game;
-
+	Game game();
+	/*
 	while (true)
 	{
 
@@ -19,7 +19,7 @@ int main()
 			{
 				; // display menu
 			}else {
-				
+
 				game.update();
 
 				game.render();
@@ -28,4 +28,5 @@ int main()
 		}
 
 	}
+	*/
 }

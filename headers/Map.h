@@ -11,6 +11,6 @@ class Map
     private:
         void parseMap();
 
-}
+};
 
 #endif

@@ -11,6 +11,6 @@ class Player
     private:
 
 
-}
+};
 
 #endif
