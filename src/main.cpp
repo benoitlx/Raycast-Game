@@ -5,5 +5,27 @@
 
 int main()
 {
+	Game game;
 
+	while (true)
+	{
+
+		if (game.quit())
+		{
+			break;
+		}else {
+
+			if (game.pause())
+			{
+				; // display menu
+			}else {
+				
+				game.update();
+
+				game.render();
+			}
+
+		}
+
+	}
 }
