@@ -1,5 +1,7 @@
 # Raycast Game Engine
 
+![Raycast Window](ressources/window.png)
+
 Run
 ```bash
 ./build.sh 
