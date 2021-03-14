@@ -2,6 +2,12 @@
 
 ![Raycast Window](ressources/window.png)
 
+## Dependencies
+
+<https://www.sfml-dev.org>
+
+## Install and Run
+
 Run
 ```bash
 make 
