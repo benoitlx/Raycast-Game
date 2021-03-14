@@ -4,7 +4,7 @@
 
 ## Dependencies
 
-<https://www.sfml-dev.org>
+<https://www.sfml-dev.org/>
 
 ## Install and Run
 
@@ -21,6 +21,7 @@ make run
 after compiling the project to launch the program.
 
 You can also run this commands:
+
 ```bash
 make clean # to clean EXEC and OBJ files
 make install # to be able to launch the game from anywhere
