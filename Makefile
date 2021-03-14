@@ -18,10 +18,6 @@ all: $(EXEC_NAME)
 clean:
 	rm $(EXEC_NAME)
 
-cleanObj:
-	rm $(OBJ_FILES)
-
-
 
 
 $(EXEC_NAME) : $(OBJ_FILES)
