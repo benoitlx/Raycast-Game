@@ -5,7 +5,8 @@
 
 int main()
 {
-	Game game;
+	Map _map("../ressources/map/map.txt");
+	Game game(_map);
 	
 	while (game.running())
 	{

@@ -23,10 +23,11 @@ void Game::initWindow()
 
 void Game::initRaycast()
 {
-
+    
 }
 
-Game::Game()
+Game::Game(Map& m) : 
+    map(m)
 {
     this->initVariables();
     this->initWindow();
@@ -82,7 +83,7 @@ void Game::render2d()
 // 3d render of the game
 void Game::render3d(unsigned int it)
 {
-    this->raycast(it);
+    this->raycast(it, 0, 0);
 }
 
 // render and display all the game
@@ -100,7 +101,7 @@ void Game::render()
 
 
 // retourne les coord de l'intersection du rayon et du mur, la distance et le type du mur (type à changer) 
-void Game::raycast(unsigned int it)
+void Game::raycast(unsigned int it, float posX, float posY)
 {
     /* Raycast
 

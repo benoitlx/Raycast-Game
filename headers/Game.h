@@ -10,6 +10,8 @@
 #include "../headers/Map.h"
 
 #include <math.h>
+#include <vector>
+
 
 /* Game Engine Class
 
@@ -19,7 +21,7 @@
 class Game
 {
     public:
-        Game();
+        Game(Map& m);
         ~Game();
 
         void update();
@@ -35,8 +37,10 @@ class Game
         /* Controller */
         sf::Clock clock;
 
-        void controller();
+        void controller(sf::Time st);
         void pollEvents();
+
+        Map& map;
 
         /* Window, Graphics */
         sf::RenderWindow* window;
@@ -54,7 +58,7 @@ class Game
         float interLength;
 
         void initRaycast();
-        void raycast(unsigned int it); // met à jour la pos de l'inter de it, le type du mur, et la longeur
+        void raycast(unsigned int it, float posX, float posY); // met à jour la pos de l'inter de it, le type du mur, et la longeur
 
 };
 

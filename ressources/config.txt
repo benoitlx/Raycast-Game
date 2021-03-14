@@ -1,0 +1,2 @@
+R 600 800
+M /map/map.txt
