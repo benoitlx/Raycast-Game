@@ -6,6 +6,7 @@ EXEC_NAME = RaycastGame
 CFLAGS = -Wall
 SRC_DIR = src/
 OBJ_FILES = main.o Game.o Player.o Map.o
+OBJ_DIR = .gitignore/
 INSTALL_DIR = /usr/bin
 
 
@@ -13,11 +14,16 @@ INSTALL_DIR = /usr/bin
 LIBS = -lsfml-graphics -lsfml-window -lsfml-system
 
 all: $(EXEC_NAME)
+	mkdir -p $(OBJ_DIR)
+	mv *.o $(OBJ_DIR)
 	
 
 clean:
 	rm $(EXEC_NAME)
+	rm -r $(OBJ_DIR)
 
+run:
+	./$(EXEC_NAME)
 
 
 $(EXEC_NAME) : $(OBJ_FILES)
