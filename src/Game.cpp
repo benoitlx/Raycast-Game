@@ -21,7 +21,7 @@ void Game::initWindow()
 
 }
 
-void initRaycast()
+void Game::initRaycast()
 {
 
 }
@@ -30,6 +30,7 @@ Game::Game()
 {
     this->initVariables();
     this->initWindow();
+    this->initRaycast();
 }
 
 Game::~Game()
@@ -81,15 +82,17 @@ void Game::render2d()
 // 3d render of the game
 void Game::render3d(unsigned int it)
 {
-
+    this->raycast(it);
 }
 
 // render and display all the game
 void Game::render()
 {
-    this->window->clear(sf::Color(255, 0, 0, 255));
+    this->window->clear();
 
     this->render2d();
+
+    // for ray in range(widthscreen)
     this->render3d(0);
 
     this->window->display();
@@ -97,9 +100,14 @@ void Game::render()
 
 
 // retourne les coord de l'intersection du rayon et du mur, la distance et le type du mur (type à changer) 
-int raycast(unsigned int it)
+void Game::raycast(unsigned int it)
 {
+    /* Raycast
 
+        - met à jour la position de l'intersection
+        - met à jour le type du mur intersecté
+        - met à jour la longueur du rayon
+    */
 }
 
 

@@ -4,12 +4,20 @@
 class Player
 {
     public:
-        float pos;  
+        Player(float pos, float angle, float rayLength, float speedMove, float speedAngle, float fov);
+        ~Player();
+
+        float pos;
+        float angle;  
+        float rayLength;
 
         void move();
 
     protected:
-        float speedMove, speedAngle;
+        float speedMove;
+        float speedAngle;
+        float fov;
+        
 
 
 };

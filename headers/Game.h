@@ -31,6 +31,10 @@ class Game
     protected:
         void initVariables();
 
+
+        /* Controller */
+        sf::Clock clock;
+
         void controller();
         void pollEvents();
 
@@ -45,8 +49,12 @@ class Game
         void render3d(unsigned int it); // Calcul ce qu'il faut afficher à chaque itération 
 
         /* Raycast Maths */
+        float interPos[2];
+        int interType;
+        float interLength;
+
         void initRaycast();
-        int raycast(unsigned int it); // retourne la pos de l'inter de it, le type du mur, et la longeur
+        void raycast(unsigned int it); // met à jour la pos de l'inter de it, le type du mur, et la longeur
 
 };
 
