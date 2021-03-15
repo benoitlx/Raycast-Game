@@ -186,6 +186,7 @@ void Game::raycast(unsigned int it, float posX, float posY)
     float b = dSin(nAngle);
 
     unsigned int iter = 0;
+    interLength = 0;
     while (interLength < player->rayLength)
     {
         if (nAngle < 180 && nAngle > 0)
@@ -200,13 +201,23 @@ void Game::raycast(unsigned int it, float posX, float posY)
 
         float y = b/a*(nextCaseX-posX)+posY;
 
+        float deltaxX = nextCaseX - posX;
+        float delatyX = y - posY;
+        float distX = std::sqrt(delatyX*delatyX + deltaxX*deltaxX);
 
         // solve y
         int nextCaseY = (std::floor(posY/map.blocSize)+iter)*map.blocSize;
 
         float x = a/b*(nextCaseY-posY)+posX;
 
+        float deltaxY = x - posX;
+        float delatyY = nextCaseY - posY;
+        float distY = std::sqrt(delatyY*delatyY + deltaxY*deltaxY);
 
+        if (!(map.vecMap[(int)x / map.blocSize][nextCaseY/map.blocSize] || map.vecMap[(int)x / map.blocSize][nextCaseY/map.blocSize-1]))
+        {
+            interLength = distX;
+        }
     }
 }
 
