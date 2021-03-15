@@ -10,7 +10,7 @@ class Map
     public:
         Map(char path[]);
 
-        int getCase(unsigned int x, unsigned int y);
+        const int getCase(unsigned int x, unsigned int y) const;
 
     protected:
         void parseMap(char p[]);

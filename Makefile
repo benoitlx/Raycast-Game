@@ -11,7 +11,7 @@ INSTALL_DIR = /usr/bin
 
 
 # Libraries
-LIBS = -lstdc++fs -lsfml-graphics -lsfml-window -lsfml-system
+LIBS = -lsfml-graphics -lsfml-window -lsfml-system
 
 all: $(EXEC_NAME)
 	mkdir -p $(OBJ_DIR)

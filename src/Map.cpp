@@ -27,7 +27,7 @@ void Map::parseMap(char p[])
         {
             for (int j=0; j<str.size(); j++)
             {
-                vecMap[i][j] = std::atoi(str[j]);
+                vecMap[i][j] = str[j] - '0';
                 std::cout << vecMap[i][j];
             }
             std::printf("\n");
@@ -38,3 +38,7 @@ void Map::parseMap(char p[])
     infile.close();
 }
 
+const int Map::getCase(unsigned int x, unsigned int y) const
+{
+    return vecMap[x][y];
+}
