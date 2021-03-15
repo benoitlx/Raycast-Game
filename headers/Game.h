@@ -58,7 +58,7 @@ class Game
 
         void initWindow();
 
-        void render2d();
+        void render2d(unsigned int it);
         void render3d(unsigned int it); // Calcul ce qu'il faut afficher à chaque itération 
 
         /* Raycast Maths */

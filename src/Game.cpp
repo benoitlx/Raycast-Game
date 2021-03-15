@@ -26,18 +26,19 @@ void Game::initWindow()
         {
             if (map.vecMap[i][j] == 1)
             {
-                sf::RectangleShape box(sf::Vector2f(map.blocSize, map.blocSize));
-                box.setPosition(sf::Vector2f(i*map.blocSize, j*map.blocSize));
+                sf::RectangleShape box(sf::Vector2f(map.blocSize/2, map.blocSize/2));
+                box.setPosition(sf::Vector2f(i*map.blocSize/2+videoMode.width-150, j*map.blocSize/2+videoMode.height-150));
                 mapShape.push_back(box);
             }
         }
     }
 
-    pl.setRadius(4);
+    pl.setRadius(2);
     pl.setFillColor(sf::Color(255, 0, 0));
-    pl.setOrigin(sf::Vector2f(4, 4));
+    pl.setOrigin(sf::Vector2f(2, 2));
 
-    pl.setPosition(sf::Vector2f(1, 1));
+    pl.setPosition(sf::Vector2f(player->pos[0]/2+videoMode.width-150, player->pos[1]/2+videoMode.height-150));
+
 }
 
 void Game::initRaycast()
@@ -54,9 +55,9 @@ Game::Game(Map& m) :
     map(m)
 {
     this->initVariables();
+    this->initPlayer();
     this->initWindow();
     this->initRaycast();
-    this->initPlayer();
 }
 
 Game::~Game()
@@ -127,7 +128,7 @@ void Game::controller(sf::Time dt)
     if (player->angle > 360) player->angle = 0;
     if (player->angle < 0) player->angle = 360;
 
-    pl.setPosition(sf::Vector2f(player->pos[0], player->pos[1]));
+    pl.setPosition(sf::Vector2f(player->pos[0]/2+videoMode.width-150, player->pos[1]/2+videoMode.height-150));
     pl.setRotation(player->angle);
 }
 
@@ -142,10 +143,12 @@ void Game::update()
 
 
 //render map
-void Game::render2d()
+void Game::render2d(unsigned int it);
 {
-    for (auto& vvec : mapShape)
-        this->window->draw(vvec);
+    for (auto& wall : mapShape)
+        this->window->draw(wall);
+
+
 
     this->window->draw(pl);
 }
