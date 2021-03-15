@@ -87,10 +87,36 @@ void Game::pollEvents()
     }
 }
 
-// update Player position, enemies position, actualize variable...
+void Game::controller(sf::Time st)
+{
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Z))
+    {
+
+    }
+
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
+    {
+
+    }
+
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
+    {
+
+    }
+
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Q))
+    {
+
+    }
+}
+
+// update Player position, enemies position, actualize variable, chek inputs, manage time...
 void Game::update()
 {
+    sf::Time dt = clock.restart();
+
     this->pollEvents();
+    this->controller(dt);
 }
 
 
@@ -112,10 +138,10 @@ void Game::render()
 {
     this->window->clear();
 
-    this->render2d();
-
     // for ray in range(widthscreen)
     this->render3d(0);
+
+    this->render2d();
 
     this->window->display();
 }
