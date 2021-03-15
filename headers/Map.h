@@ -12,8 +12,6 @@ class Map
         Map(char path[], int size);
         ~Map();
 
-        const int getCase(unsigned int x, unsigned int y) const;
-
         int blocSize;
         std::vector<std::vector<unsigned int>> vecMap;
 

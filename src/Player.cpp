@@ -2,8 +2,8 @@
 
 Player::Player(float px, float py, float a, float rL, float sM, float sA, float f)
 {
-    posx = px;
-    posy = py;
+    pos[0] = px;
+    pos[1] = py;
     angle = a;
     rayLength = rL;
 

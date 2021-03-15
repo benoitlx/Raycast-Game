@@ -40,7 +40,7 @@ void Map::parseMap(char p[])
         }
     }
 
-    /* Check the vector */
+    /* Check the vector on the screen */
     for (int i=0; i<vecMap.size(); i++)
     {
         for (int j=0; j<vecMap[i].size(); j++)
@@ -51,9 +51,4 @@ void Map::parseMap(char p[])
     }
 
     infile.close();
-}
-
-const int Map::getCase(unsigned int x, unsigned int y) const
-{
-    return vecMap[x][y];
 }

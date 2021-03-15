@@ -26,12 +26,18 @@ void Game::initWindow()
         {
             if (map.vecMap[i][j] == 1)
             {
-                sf::RectangleShape box(sf::Vector2f(4, 4));
-                box.setPosition(sf::Vector2f(i*4, j*4));
+                sf::RectangleShape box(sf::Vector2f(map.blocSize, map.blocSize));
+                box.setPosition(sf::Vector2f(i*map.blocSize, j*map.blocSize));
                 mapShape.push_back(box);
             }
         }
     }
+
+    pl.setRadius(4);
+    pl.setFillColor(sf::Color(255, 0, 0));
+    pl.setOrigin(sf::Vector2f(4, 4));
+
+    pl.setPosition(sf::Vector2f(1, 1));
 }
 
 void Game::initRaycast()
@@ -87,27 +93,42 @@ void Game::pollEvents()
     }
 }
 
-void Game::controller(sf::Time st)
+void Game::controller(sf::Time dt)
 {
+    float addx = dCos(player->angle)*player->speedMove*dt.asSeconds();
+    float addy = dSin(player->angle)*player->speedMove*dt.asSeconds();
+
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Z))
     {
-
+        if(!map.vecMap[(player->pos[0] + addx)/map.blocSize][player->pos[1]/map.blocSize])
+            player->pos[0] += addx;
+        
+        if(!map.vecMap[player->pos[0]/map.blocSize][(player->pos[1] + addy)/map.blocSize])
+            player->pos[1] += addy;
     }
 
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
     {
-
+        if(!map.vecMap[(player->pos[0] - addx)/map.blocSize][player->pos[1]/map.blocSize])
+            player->pos[0] -= addx;
+        
+        if(!map.vecMap[player->pos[0]/map.blocSize][(player->pos[1] - addy)/map.blocSize])
+            player->pos[1] -= addy;
     }
 
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
     {
-
+        player->angle -= player->speedAngle*dt.asSeconds();
     }
 
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Q))
-    {
+        player->angle += player->speedAngle*dt.asSeconds();
 
-    }
+    if (player->angle > 360) player->angle = 0;
+    if (player->angle < 0) player->angle = 360;
+
+    pl.setPosition(sf::Vector2f(player->pos[0], player->pos[1]));
+    pl.setRotation(player->angle);
 }
 
 // update Player position, enemies position, actualize variable, chek inputs, manage time...
@@ -125,6 +146,8 @@ void Game::render2d()
 {
     for (auto& vvec : mapShape)
         this->window->draw(vvec);
+
+    this->window->draw(pl);
 }
 
 // 3d render of the game
