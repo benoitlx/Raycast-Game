@@ -200,6 +200,7 @@ void Game::raycast(unsigned int it, float posX, float posY)
 
         float y = b/a*(nextCaseX-posX)+posY;
 
+
         // solve y
         int nextCaseY = (std::floor(posY/map.blocSize)+iter)*map.blocSize;
 
