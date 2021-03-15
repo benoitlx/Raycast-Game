@@ -5,7 +5,7 @@
 
 int main()
 {
-	Map _map("../ressources/map/map.txt");
+	Map _map("/home/benoitl/Dev/cpp/raycastingv2.0/ressources/map/map.txt");
 	Game game(_map);
 	
 	while (game.running())

@@ -6,29 +6,35 @@ Map::Map(char path[])
     this->parseMap(path);
 }
 
-void Map::parseMap(char path[])
+void Map::parseMap(char p[])
 {
+    std::ifstream infile;
 
-    std::string p = "map.txt";
-    std::ifstream input;
+    infile.open(p);
 
-    input.open("map.txt");
-
-    if (!input.is_open())
+    if (!infile)
     {
-        std::printf("Files not open error");
+        std::printf("Unable to open file\n");
+
         return;
-    }
-
-    while (input)
+    } 
+    
+    std::string str;
+    int i = 0;
+    while (std::getline(infile, str))
     {
-        std::string line;
-
-        std::getline(input, line);
-
-        std::cout << line << std::endl;
+        if (isdigit(str[0]))
+        {
+            for (int j=0; j<str.size(); j++)
+            {
+                vecMap[i][j] = std::atoi(str[j]);
+                std::cout << vecMap[i][j];
+            }
+            std::printf("\n");
+        }
+        i++;
     }
 
-    input.close();
+    infile.close();
 }
 
