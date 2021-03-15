@@ -4,10 +4,10 @@
 class Player
 {
     public:
-        Player(float pos, float angle, float rayLength, float speedMove, float speedAngle, float fov);
+        Player(float px, float py, float a, float rL, float sM, float sA, float f);
         ~Player();
 
-        float pos;
+        float posx, posy;
         float angle;  
         float rayLength;
 

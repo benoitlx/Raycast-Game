@@ -8,9 +8,12 @@
 class Map 
 {
     public:
-        Map(char path[]);
+        Map(char path[], int size);
+        ~Map();
 
         const int getCase(unsigned int x, unsigned int y) const;
+
+        int blocSize;
 
     protected:
         void parseMap(char p[]);

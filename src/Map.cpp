@@ -1,9 +1,15 @@
 #include "../headers/Map.h"
 
-Map::Map(char path[])
+Map::Map(char path[], int size)
 {
-    // std::printf(path);
     this->parseMap(path);
+
+    blocSize = size;
+}
+
+Map::~Map()
+{
+    
 }
 
 void Map::parseMap(char p[])

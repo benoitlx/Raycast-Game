@@ -42,6 +42,10 @@ class Game
 
         Map& map;
 
+        /* Player */
+        void initPlayer();
+        Player* player;
+
         /* Window, Graphics */
         sf::RenderWindow* window;
         sf::VideoMode videoMode;

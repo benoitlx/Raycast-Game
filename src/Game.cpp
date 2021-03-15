@@ -8,7 +8,7 @@
 void Game::initVariables()
 {
     this->window = nullptr;
-
+    this->player = nullptr;
 }
 
 void Game::initWindow()
@@ -26,17 +26,24 @@ void Game::initRaycast()
     
 }
 
+void Game::initPlayer()
+{
+    this->player = new Player(3*map.blocSize, 3*map.blocSize, 90, 300, 100, 75, 60);
+}
+
 Game::Game(Map& m) : 
     map(m)
 {
     this->initVariables();
     this->initWindow();
     this->initRaycast();
+    this->initPlayer();
 }
 
 Game::~Game()
 {
     delete this->window;
+    delete this->player;
 }
 
 
