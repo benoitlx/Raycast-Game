@@ -38,7 +38,6 @@ void Game::initWindow()
     pl.setOrigin(sf::Vector2f(2, 2));
 
     pl.setPosition(sf::Vector2f(player->pos[0]/2+videoMode.width-150, player->pos[1]/2+videoMode.height-150));
-
 }
 
 void Game::initRaycast()
@@ -143,12 +142,10 @@ void Game::update()
 
 
 //render map
-void Game::render2d(unsigned int it);
+void Game::render2d(unsigned int it)
 {
-    for (auto& wall : mapShape)
-        this->window->draw(wall);
-
-
+    for (auto& vvec : mapShape)
+        this->window->draw(vvec);
 
     this->window->draw(pl);
 }
@@ -156,7 +153,7 @@ void Game::render2d(unsigned int it);
 // 3d render of the game
 void Game::render3d(unsigned int it)
 {
-    this->raycast(it, 0, 0);
+    // this->raycast(it, 0, 0);
 }
 
 // render and display all the game
@@ -167,7 +164,7 @@ void Game::render()
     // for ray in range(widthscreen)
     this->render3d(0);
 
-    this->render2d();
+    this->render2d(0);
 
     this->window->display();
 }
@@ -182,6 +179,34 @@ void Game::raycast(unsigned int it, float posX, float posY)
         - met à jour le type du mur intersecté
         - met à jour la longueur du rayon
     */
+
+    float nAngle = player->angle + player->fov/2 - it*(player->fov/videoMode.width);
+
+    float a = dCos(nAngle);
+    float b = dSin(nAngle);
+
+    unsigned int iter = 0;
+    while (interLength < player->rayLength)
+    {
+        if (nAngle < 180 && nAngle > 0)
+        {
+            iter++;
+        }else{
+            iter--;
+        }
+
+        // solve x
+        int nextCaseX = (std::floor(posX/map.blocSize)+iter)*map.blocSize;
+
+        float y = b/a*(nextCaseX-posX)+posY;
+
+        // solve y
+        int nextCaseY = (std::floor(posY/map.blocSize)+iter)*map.blocSize;
+
+        float x = a/b*(nextCaseY-posY)+posX;
+
+
+    }
 }
 
 
