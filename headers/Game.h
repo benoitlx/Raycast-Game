@@ -70,7 +70,6 @@ class Game
         int interType;
         float interLength;
 
-        void initRaycast();
         void raycast(unsigned int it, float posX, float posY); // met à jour la pos de l'inter de it, le type du mur, et la longeur
 
 };

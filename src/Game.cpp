@@ -40,10 +40,6 @@ void Game::initWindow()
     pl.setPosition(sf::Vector2f(player->pos[0]/2+videoMode.width-150, player->pos[1]/2+videoMode.height-150));
 }
 
-void Game::initRaycast()
-{
-    
-}
 
 void Game::initPlayer()
 {
@@ -56,7 +52,6 @@ Game::Game(Map& m) :
     this->initVariables();
     this->initPlayer();
     this->initWindow();
-    this->initRaycast();
 }
 
 Game::~Game()
