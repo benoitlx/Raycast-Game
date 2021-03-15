@@ -19,6 +19,19 @@ void Game::initWindow()
 
     this->window = new sf::RenderWindow(this->videoMode, "Raycasting", sf::Style::Titlebar | sf::Style::Close);
 
+    
+    for (unsigned int i = 0; i<map.vecMap.size(); i++)
+    {
+        for (unsigned int j = 0; j<map.vecMap[i].size(); j++)
+        {
+            if (map.vecMap[i][j] == 1)
+            {
+                sf::RectangleShape box(sf::Vector2f(4, 4));
+                box.setPosition(sf::Vector2f(i*4, j*4));
+                mapShape.push_back(box);
+            }
+        }
+    }
 }
 
 void Game::initRaycast()
@@ -84,7 +97,8 @@ void Game::update()
 //render map
 void Game::render2d()
 {
-
+    for (auto& vvec : mapShape)
+        this->window->draw(vvec);
 }
 
 // 3d render of the game

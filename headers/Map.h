@@ -3,6 +3,7 @@
 
 #include <fstream>
 #include <iostream>
+#include <vector>
 
 
 class Map 
@@ -14,12 +15,11 @@ class Map
         const int getCase(unsigned int x, unsigned int y) const;
 
         int blocSize;
+        std::vector<std::vector<unsigned int>> vecMap;
 
     protected:
         void parseMap(char p[]);
         
-        int vecMap[200][200];
-
 };
 
 #endif

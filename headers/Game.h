@@ -51,6 +51,8 @@ class Game
         sf::VideoMode videoMode;
         sf::Event event;
 
+        std::vector<sf::RectangleShape> mapShape;
+
         void initWindow();
 
         void render2d();

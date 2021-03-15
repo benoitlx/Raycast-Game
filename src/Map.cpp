@@ -9,7 +9,7 @@ Map::Map(char path[], int size)
 
 Map::~Map()
 {
-    
+
 }
 
 void Map::parseMap(char p[])
@@ -26,19 +26,28 @@ void Map::parseMap(char p[])
     } 
     
     std::string str;
-    int i = 0;
     while (std::getline(infile, str))
     {
         if (isdigit(str[0]))
         {
+            std::vector<unsigned int> line;
             for (int j=0; j<str.size(); j++)
             {
-                vecMap[i][j] = str[j] - '0';
-                std::cout << vecMap[i][j];
+                line.push_back(str[j] - '0');
             }
-            std::printf("\n");
+            vecMap.push_back(line);
+            line.clear();
         }
-        i++;
+    }
+
+    /* Check the vector */
+    for (int i=0; i<vecMap.size(); i++)
+    {
+        for (int j=0; j<vecMap[i].size(); j++)
+        {
+            std::cout << vecMap[i][j];
+        }
+        std::cout << std::endl;
     }
 
     infile.close();
