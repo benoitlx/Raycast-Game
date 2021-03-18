@@ -56,6 +56,8 @@ class Game
         std::vector<sf::RectangleShape> mapShape;
         sf::CircleShape pl;
 
+        std::vector<sf::VertexArray> vecRays;
+
         void initWindow();
 
         void render2d(unsigned int it);

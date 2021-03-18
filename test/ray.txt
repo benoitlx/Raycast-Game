@@ -1,0 +1,41 @@
+ /*
+    while (hit == 0)
+    {
+        
+        //std::cout << "Angle: " << nAngle << "\n";
+
+        int indToCheckX = (std::floor(posX/map.blocSize) - iterX)*(nAngle > 90 && nAngle < 270) + 
+                          (std::ceil(posX/map.blocSize) + iterX)*(!(nAngle > 90 && nAngle < 270));
+        iterX += (nAngle > 90 && nAngle < 270) - (!(nAngle > 90 && nAngle < 270));
+        int indToCheckY = (std::floor(posY/map.blocSize) - iterY)*(nAngle < 180 && nAngle > 0) + 
+                          (std::ceil(posY/map.blocSize) + iterY)*(!(nAngle < 180 && nAngle > 0));
+        iterY += (nAngle < 180 && nAngle > 0) - (!(nAngle < 180 && nAngle > 0));
+
+        std::cout << iterX << std::endl;
+        std::cout << iterY << std::endl;
+        //std::cout << "x" << indToCheckX << "\n";
+        //std::cout << "y" << indToCheckY << "\n";
+        
+        
+        // solve x
+        float y = std::abs(b/a*(indToCheckX*map.blocSize-posX)+posY-25);
+
+        //std::cout << "y: " << y << "\n";
+
+        float deltaxX = indToCheckX*map.blocSize - posX;
+        float delatyX = y - posY;
+        float distX = std::sqrt(delatyX*delatyX + deltaxX*deltaxX);
+
+        // solve y
+        float x = std::abs(a/b*(indToCheckY*map.blocSize-posY)+posX);
+
+        //std::cout << "x: " << x << "\n";
+
+        float deltaxY = x - posX;
+        float delatyY = indToCheckY*map.blocSize - posY;
+        float distY = std::sqrt(delatyY*delatyY + deltaxY*deltaxY);
+
+        
+
+
+    }*/

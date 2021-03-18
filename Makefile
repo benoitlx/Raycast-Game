@@ -3,7 +3,7 @@
 
 CC = g++
 EXEC_NAME = RaycastGame
-CFLAGS = -Wall
+CFLAGS = -Wall -g
 SRC_DIR = src/
 OBJ_FILES = main.o Game.o Player.o Map.o
 OBJ_DIR = .gitignore/

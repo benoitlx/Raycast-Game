@@ -52,7 +52,7 @@ void Game::initWindow()
 
 void Game::initPlayer()
 {
-    this->player = new Player(3*map.blocSize, 3*map.blocSize, 90, 300, 100, 75, 90);
+    this->player = new Player(3*map.blocSize, 3*map.blocSize, 90, 300, 100, 75, 60);
 }
 
 Game::Game(Map& m) : 
@@ -172,7 +172,7 @@ void Game::render()
     for (unsigned int it = 0; it<videoMode.width; it++)
     {
         this->raycast(it, player->pos[0], player->pos[1]);
-        std::cout << "\n" << std::endl;
+        std::cout << "new call" << std::endl;
 
         // vecRays[it][0] = sf::Vector2f(player->pos[0], player->pos[1]);
         // vecRays[it][1] = sf::Vector2f(interPos[0], interPos[1]);
@@ -208,56 +208,78 @@ void Game::raycast(unsigned int it, float posX, float posY)
         - met à jour la longueur du rayon
     */
     std::cout << it << "/" << videoMode.width << "\n";
-    std::cout << "Position:\n" ;
     std::cout << posX << " " << posY << "\n";
     
-    float nAngle = player->angle + player->fov/2 - it*(player->fov/videoMode.width);
+    float nAngle = player->angle + player->fov/2 - it*2*(player->fov/videoMode.width);
 
-    sf::Vector2f dir = {dCos(nAngle), dSin(nAngle)};
+    double a = dCos(nAngle);
+    double b = dSin(nAngle);
+
     
+    
+
     int mapX = int(posX/map.blocSize);
     int mapY = int(posY/map.blocSize);
 
-    double dX = std::abs(map.blocSize/dir.x);
-    double dY = std::abs(map.blocSize/dir.y);
+    double rlx;
+    double rly;
 
-    double distX;
-    double distY;
+    double deltaX = std::abs(map.blocSize / a);
+    double deltaY = std::abs(map.blocSize / b);
+    std::cout << a << " " << b << "\n";
 
     int stepX;
     int stepY;
 
-    int hit = 0;
     int side;
 
-    if (dir.x<0){ stepX = -1; distX = (posX - mapX*map.blocSize) / dir.x; }
-    else        { stepX = 1; distX = ((mapX + 1)*map.blocSize - posX) / dir.x; }
-    
-    if (dir.y<0){ stepY = -1; distY = (posY - mapY*map.blocSize) / dir.y; }
-    else        { stepY = 1; distY = ((mapY + 1)*map.blocSize - posY) / dir.y; }
+    bool hit = false;
+
+    if (a < 0)
+    {
+        stepX = -1;
+        rlx = (posX/map.blocSize - mapX) * deltaX;
+    }
+    else
+    {
+        stepX = 1;
+        rlx = (mapX + 1.0 - posX/map.blocSize) * deltaX;
+    }
+    if (b < 0)
+    {
+        stepY = -1;
+        rly = (posY/map.blocSize - mapY) * deltaY;
+    }
+    else
+    {
+        stepY = 1;
+        rly = (mapY + 1.0 - posY/map.blocSize) * deltaY;
+    }
 
     while (hit == 0)
     {
-        if (distY < distX)
-        {
-            distY += dY;
-            mapY += stepY;
-            side = 1;
-        }else{
-            distX += dX;
+        if (rlx < rly){
+            rlx += deltaX;
             mapX += stepX;
             side = 0;
+        }else{
+            rly += deltaY;
+            mapY += stepY;
+            side = 1;
         }
-
-        if (map.vecMap[mapY][mapX]) hit = 1;
+        if (map.vecMap[mapY][mapX]) hit = 1;     
     }
+    
+    std::cout << rlx << " " << rly << "\n";
 
-    double final_dist;
-    if (side) final_dist = distY;
-    else      final_dist = distX;
-
-    interPos[0] = posX + final_dist*dir.x;
-    interPos[1] = posY + final_dist*dir.y;
+    if (side == 0)
+    {
+        interPos[0] = posX + rlx*a;
+        interPos[1] = posY + rlx*b;
+    }else{
+        interPos[0] = posX + rly*a;
+        interPos[1] = posY + rly*b;
+    } 
 }
 
 
